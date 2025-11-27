@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Pure black and white base */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    /* Primary: Pure black */
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Pure white */
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 0 0% 0%;
+
+    /* Muted grays */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 35%;
+
+    /* Accent: Dark VIBGYOR colors */
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 0%;
+
+    /* Dark VIBGYOR spectrum colors */
+    --vibgyor-violet: 270 90% 25%;
+    --vibgyor-indigo: 240 85% 30%;
+    --vibgyor-blue: 220 90% 35%;
+    --vibgyor-green: 140 85% 25%;
+    --vibgyor-yellow: 45 90% 40%;
+    --vibgyor-orange: 25 95% 45%;
+    --vibgyor-red: 0 85% 40%;
+
+    --destructive: 0 85% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 0%;
+
+    --radius: 0.3125rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 85% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 100%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+  }
+
+  strong, b {
+    font-weight: 700;
+  }
+}
+
+@layer utilities {
+  .text-vibgyor-violet {
+    color: hsl(var(--vibgyor-violet));
+  }
+  .text-vibgyor-indigo {
+    color: hsl(var(--vibgyor-indigo));
+  }
+  .text-vibgyor-blue {
+    color: hsl(var(--vibgyor-blue));
+  }
+  .text-vibgyor-green {
+    color: hsl(var(--vibgyor-green));
+  }
+  .text-vibgyor-yellow {
+    color: hsl(var(--vibgyor-yellow));
+  }
+  .text-vibgyor-orange {
+    color: hsl(var(--vibgyor-orange));
+  }
+  .text-vibgyor-red {
+    color: hsl(var(--vibgyor-red));
+  }
+  .bg-vibgyor-violet {
+    background-color: hsl(var(--vibgyor-violet));
+  }
+  .bg-vibgyor-indigo {
+    background-color: hsl(var(--vibgyor-indigo));
+  }
+  .bg-vibgyor-blue {
+    background-color: hsl(var(--vibgyor-blue));
+  }
+  .bg-vibgyor-green {
+    background-color: hsl(var(--vibgyor-green));
+  }
+  .bg-vibgyor-yellow {
+    background-color: hsl(var(--vibgyor-yellow));
+  }
+  .bg-vibgyor-orange {
+    background-color: hsl(var(--vibgyor-orange));
+  }
+  .bg-vibgyor-red {
+    background-color: hsl(var(--vibgyor-red));
+  }
+}
