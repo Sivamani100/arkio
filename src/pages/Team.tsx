@@ -28,13 +28,13 @@ const Team = () => {
           {
             name: 'Sivamanikanta Mallipurapu',
             role: 'Co-Founder & CEO',
-            bio: 'Sivamanikanta brings over 18 years of experience in tech leadership and has been instrumental in scaling multiple successful startups. His vision for TeamPortal emerged from his passion for building diverse, high-performing teams. With an MBA from Stanford and a background in computer science, he combines technical expertise with strategic business acumen.',
+            bio: 'Tech leader and scaling startups. Combines technical expertise with strategic business vision.',
             color: 'vibgyor-violet',
           },
           {
             name: 'Shaik Gafur Anaruddin',
             role: 'Co-Founder & CTO',
-            bio: 'As our technical visionary, Gafur has architected systems serving millions of users globally. His expertise in scalable architecture and emerging technologies has been crucial to our technical success. He holds a PhD in Computer Science and is passionate about mentoring the next generation of engineers.',
+            bio: 'Technical architect with expertise in scalable systems. Passionate about mentoring the next generation of engineers.',
             color: 'vibgyor-blue',
           },
         ];
