@@ -1,83 +1,138 @@
+import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Card } from '@/components/ui/card';
 
+type Founder = {
+  name: string;
+  role: string;
+  bio: string;
+  color: string;
+};
+
 const Team = () => {
-  const founders = [
-    {
-      name: 'Sarah Johnson',
-      role: 'Co-Founder & CEO',
-      bio: 'Sarah brings over 15 years of experience in tech leadership and has been instrumental in scaling multiple successful startups. Her vision for TeamPortal emerged from her passion for building diverse, high-performing teams. With an MBA from Stanford and a background in computer science, she combines technical expertise with strategic business acumen. Sarah is committed to creating an inclusive workplace where innovation thrives and every team member can reach their full potential.',
-      color: 'vibgyor-violet',
-    },
-    {
-      name: 'Michael Chen',
-      role: 'Co-Founder & CTO',
-      bio: 'As our technical visionary, Michael has architected systems serving millions of users globally. His expertise in scalable architecture and emerging technologies has been crucial to our technical success. Before co-founding TeamPortal, Michael led engineering teams at top tech companies and contributed to several open-source projects. He holds a PhD in Computer Science and is passionate about mentoring the next generation of engineers. Michael believes in writing clean, maintainable code and building systems that stand the test of time.',
-      color: 'vibgyor-blue',
-    },
-    {
-      name: 'Emily Rodriguez',
-      role: 'Co-Founder & CPO',
-      bio: 'Emily is a product design expert with a keen eye for user experience and a track record of launching successful products. Her human-centered approach to product development ensures that everything we build truly serves our users needs. With a background in design thinking and psychology, Emily bridges the gap between what users want and what technology can deliver. She has won multiple industry awards for her innovative designs and is a frequent speaker at design conferences worldwide.',
-      color: 'vibgyor-green',
-    },
-    {
-      name: 'David Kim',
-      role: 'Co-Founder & COO',
-      bio: 'David ensures our operations run smoothly and efficiently, bringing structure to our ambitious goals. His background in operations management and strategic planning has been invaluable in scaling our organization. Before TeamPortal, David optimized operations for Fortune 500 companies and startups alike. He is passionate about building sustainable systems and processes that enable growth without sacrificing quality. David also champions our commitment to social responsibility and environmental sustainability.',
-      color: 'vibgyor-orange',
-    },
-  ];
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [founders, setFounders] = useState<Founder[]>([]);
+
+  useEffect(() => {
+    // Simulate API fetch
+    const fetchFounders = async () => {
+      try {
+        // In a real app, this would be an API call
+        // const response = await fetch('/api/founders');
+        // const data = await response.json();
+        
+        // Mock data
+        const mockFounders: Founder[] = [
+          {
+            name: 'Sivamanikanta Mallipurapu',
+            role: 'Co-Founder & CEO',
+            bio: 'Sivamanikanta brings over 18 years of experience in tech leadership and has been instrumental in scaling multiple successful startups. His vision for TeamPortal emerged from his passion for building diverse, high-performing teams. With an MBA from Stanford and a background in computer science, he combines technical expertise with strategic business acumen.',
+            color: 'vibgyor-violet',
+          },
+          {
+            name: 'Shaik Gafur Anaruddin',
+            role: 'Co-Founder & CTO',
+            bio: 'As our technical visionary, Gafur has architected systems serving millions of users globally. His expertise in scalable architecture and emerging technologies has been crucial to our technical success. He holds a PhD in Computer Science and is passionate about mentoring the next generation of engineers.',
+            color: 'vibgyor-blue',
+          },
+        ];
+        
+        setFounders(mockFounders);
+        setIsLoading(false);
+      } catch (err) {
+        console.error('Failed to load team data:', err);
+        setError('Failed to load team information. Please try again later.');
+        setIsLoading(false);
+      }
+    };
+
+    fetchFounders();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-vibgyor-blue"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center p-8 max-w-md">
+          <div className="text-red-500 text-4xl mb-4">⚠️</div>
+          <h2 className="text-2xl font-bold mb-2">Something went wrong</h2>
+          <p className="text-muted-foreground mb-6">{error}</p>
+          <button 
+            onClick={() => window.location.reload()}
+            className="px-6 py-2 bg-vibgyor-blue text-white rounded-md hover:bg-vibgyor-blue/90 transition-colors"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
       
       <main className="flex-grow pt-16">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-vibgyor-violet/5 via-vibgyor-blue/5 to-vibgyor-indigo/5">
+        <section className="py-16 md:py-24 bg-gradient-to-br from-vibgyor-violet/5 via-vibgyor-blue/5 to-vibgyor-indigo/5">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Meet Our <span className="text-vibgyor-blue">Founders</span>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+                Meet Our <span className="text-vibgyor-blue">Leadership</span>
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed">
-                The visionaries behind TeamPortal. Our founders bring decades of combined experience and a shared passion for building innovative solutions and exceptional teams.
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                The visionaries behind our success. Our leaders bring decades of combined experience and a shared passion for building innovative solutions and exceptional teams.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Founders Grid */}
-        <section className="py-20">
+        {/* Founders Section */}
+        <section className="py-16 md:py-20">
           <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto space-y-12">
+            <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">
+              Our <span className="text-vibgyor-indigo">Founders</span>
+            </h2>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
               {founders.map((founder, index) => (
-                <Card
+                <Card 
                   key={index}
-                  className={`p-8 hover:shadow-lg transition-shadow ${
-                    index % 2 === 0 ? 'md:mr-12' : 'md:ml-12'
-                  }`}
+                  className="group hover:shadow-lg transition-all duration-300 overflow-hidden"
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {/* Photo placeholder */}
-                    <div
-                      className={`bg-${founder.color}/10 rounded-[5px] aspect-square flex items-center justify-center`}
+                  <div className="flex flex-col md:flex-row h-full">
+                    <div 
+                      className={`w-full md:w-1/3 bg-${founder.color}/10 flex items-center justify-center p-6`}
                     >
                       <div className="text-center">
-                        <div className={`text-6xl font-bold text-${founder.color} mb-2`}>
+                        <div 
+                          className={`text-5xl font-bold text-${founder.color} mb-2 transition-transform group-hover:scale-110`}
+                        >
                           {founder.name.split(' ').map(n => n[0]).join('')}
                         </div>
-                        <div className="text-sm text-muted-foreground">Photo</div>
+                        <div className="text-sm text-muted-foreground">
+                          {founder.role.split('&')[0].trim()}
+                        </div>
                       </div>
                     </div>
-
-                    {/* Bio */}
-                    <div className="md:col-span-2">
-                      <h2 className="text-2xl font-bold mb-2">{founder.name}</h2>
-                      <p className={`text-${founder.color} font-bold mb-4`}>{founder.role}</p>
-                      <p className="text-muted-foreground leading-relaxed">{founder.bio}</p>
+                    
+                    <div className="flex-1 p-6">
+                      <h3 className="text-xl font-bold mb-2">{founder.name}</h3>
+                      <p className={`text-sm font-medium text-${founder.color} mb-4`}>
+                        {founder.role}
+                      </p>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {founder.bio}
+                      </p>
                     </div>
                   </div>
                 </Card>
@@ -86,44 +141,79 @@ const Team = () => {
           </div>
         </section>
 
-        {/* Team Culture Section */}
-        <section className="py-20 bg-muted/30">
+        {/* Values Section */}
+        <section className="py-16 bg-muted/30">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-8 text-center">
-                Our Team <span className="text-vibgyor-indigo">Culture</span>
+            <div className="max-w-4xl mx-auto text-center mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                Our <span className="text-vibgyor-indigo">Core Values</span>
               </h2>
-              
-              <div className="space-y-6 text-muted-foreground leading-relaxed">
-                <p>
-                  At TeamPortal, we've built a culture that celebrates diversity, encourages innovation, and supports continuous learning. Our founders have created an environment where every team member feels valued and empowered to contribute their unique perspectives and talents.
-                </p>
-                
-                <p>
-                  We believe that great teams are built on trust, transparency, and mutual respect. Regular team activities, open communication channels, and collaborative decision-making processes ensure that everyone has a voice. We celebrate successes together and learn from challenges as a united team.
-                </p>
-                
-                <p>
-                  Professional development is not just encouraged; it's actively supported through mentorship programs, learning budgets, and opportunities to work on cutting-edge projects. Our founders are committed to helping each team member grow their skills and advance their careers within the organization.
-                </p>
-                
-                <p>
-                  Work-life balance is a priority. We understand that our team members have lives outside of work, and we've implemented flexible working arrangements, generous time-off policies, and wellness programs to ensure everyone can perform at their best while maintaining a healthy lifestyle.
-                </p>
-              </div>
+              <p className="text-muted-foreground">
+                Guiding principles that shape our culture and drive our success
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {[
+                {
+                  title: 'Innovation',
+                  description: 'We embrace creativity and continuously seek new ways to solve problems and improve our work.'
+                },
+                {
+                  title: 'Integrity',
+                  description: 'We conduct ourselves with honesty, transparency, and ethical behavior in all our interactions.'
+                },
+                {
+                  title: 'Excellence',
+                  description: 'We strive for the highest standards in everything we do, delivering quality and value.'
+                },
+                {
+                  title: 'Collaboration',
+                  description: 'We believe in the power of teamwork and diverse perspectives to achieve great results.'
+                },
+                {
+                  title: 'Growth',
+                  description: 'We are committed to continuous learning and personal development for all team members.'
+                },
+                {
+                  title: 'Impact',
+                  description: 'We focus on creating meaningful, positive change for our customers and communities.'
+                }
+              ].map((value, index) => (
+                <Card key={index} className="p-6 hover:shadow-md transition-shadow">
+                  <h3 className="font-bold text-lg mb-2">{value.title}</h3>
+                  <p className="text-sm text-muted-foreground">{value.description}</p>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
 
         {/* Join Us CTA */}
-        <section className="py-20">
+        <section className="py-16 md:py-24 bg-gradient-to-r from-vibgyor-violet/5 to-vibgyor-blue/5">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-4">
-              Want to Work With <span className="text-vibgyor-blue">Our Team?</span>
-            </h2>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              We're always looking for talented individuals to join our growing team. If you're passionate about innovation and want to work with inspiring leaders, we'd love to hear from you.
-            </p>
+            <div className="max-w-2xl mx-auto">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                Join Our <span className="text-vibgyor-blue">Team</span>
+              </h2>
+              <p className="text-muted-foreground mb-8">
+                We're always looking for talented individuals who share our passion and values. If you're ready to make an impact, we'd love to hear from you.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="/careers"
+                  className="px-6 py-3 bg-vibgyor-blue text-white rounded-md hover:bg-vibgyor-blue/90 transition-colors"
+                >
+                  View Open Positions
+                </a>
+                <a
+                  href="/contact"
+                  className="px-6 py-3 border border-vibgyor-blue text-vibgyor-blue rounded-md hover:bg-vibgyor-blue/5 transition-colors"
+                >
+                  Contact Us
+                </a>
+              </div>
+            </div>
           </div>
         </section>
       </main>
