@@ -148,8 +148,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <h3 className="font-bold mb-2">Email Us</h3>
-                        <p className="text-muted-foreground">hello@teamportal.com</p>
-                        <p className="text-muted-foreground">support@teamportal.com</p>
+                        <p className="text-muted-foreground">sivamanikanta@ggu.edu.in</p>
                       </div>
                     </div>
                   </Card>
@@ -161,8 +160,8 @@ const Contact = () => {
                       </div>
                       <div>
                         <h3 className="font-bold mb-2">Call Us</h3>
-                        <p className="text-muted-foreground">+1 (555) 123-4567</p>
-                        <p className="text-muted-foreground">Mon-Fri, 9AM-6PM EST</p>
+                        <p className="text-muted-foreground">+91 9849497911</p>
+                        <p className="text-muted-foreground">Mon-Sat, 9AM-6PM IST</p>
                       </div>
                     </div>
                   </Card>
@@ -174,9 +173,9 @@ const Contact = () => {
                       </div>
                       <div>
                         <h3 className="font-bold mb-2">Visit Us</h3>
-                        <p className="text-muted-foreground">123 Innovation Street</p>
-                        <p className="text-muted-foreground">Tech City, TC 12345</p>
-                        <p className="text-muted-foreground">United States</p>
+                        <p className="text-muted-foreground">Godavari Global University</p>
+                        <p className="text-muted-foreground">Rajamahnedravarm</p>
+                        <p className="text-muted-foreground">Andhra Pradesh, India</p>
                       </div>
                     </div>
                   </Card>
